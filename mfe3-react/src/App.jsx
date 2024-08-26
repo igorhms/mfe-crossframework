@@ -5,7 +5,7 @@ import "./index.css";
 
 export const App = () => (
   <div className="container">
-    <h1>App React</h1>
+    <h1>React App</h1>
     <p>Versão: {React.version}</p>
     <div>Name: mfe3-react</div>
     <div>Framework: react</div>

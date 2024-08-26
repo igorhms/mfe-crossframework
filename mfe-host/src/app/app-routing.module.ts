@@ -35,6 +35,16 @@ const APP_ROUTES: Routes = [
       elementName: 'mfe3_react-element'
     } as WebComponentWrapperOptions,
   },
+  {
+    path: 'mfe4-vue',
+    component: WebComponentWrapper,
+    data: {
+      remoteEntry: 'http://localhost:4204/remoteEntry.js',
+      remoteName: 'mfe4_vue',
+      exposedModule: './App',
+      elementName: 'mfe4_vue-element'
+    } as WebComponentWrapperOptions,
+  },
 ];
 
 @NgModule({
