@@ -32,8 +32,14 @@ const APP_ROUTES: Routes = [
       remoteEntry: 'http://localhost:4203/remoteEntry.js',
       remoteName: 'mfe3_react',
       exposedModule: './App',
-      elementName: 'mfe3_react-element'
+      elementName: 'mfe3_react-element',
     } as WebComponentWrapperOptions,
+    children: [
+      {
+        path: '**',
+        component: WebComponentWrapper,
+      },
+    ],
   },
   {
     path: 'mfe4-vue',
@@ -42,8 +48,14 @@ const APP_ROUTES: Routes = [
       remoteEntry: 'http://localhost:4204/remoteEntry.js',
       remoteName: 'mfe4_vue',
       exposedModule: './App',
-      elementName: 'mfe4_vue-element'
+      elementName: 'mfe4_vue-element',
     } as WebComponentWrapperOptions,
+    children: [
+      {
+        path: '**',
+        component: WebComponentWrapper,
+      },
+    ],
   },
 ];
 

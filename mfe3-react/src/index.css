@@ -1,10 +1,14 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .container {
   font-size: 3rem;
   margin: auto;
   max-width: 800px;
   margin-top: 20px;
+}
+
+.nav-card {
+  border-radius: 10px;
+  background: #cccccc;
+  border: 1px groove;
+  padding: 50px;
+  cursor: pointer;
 }

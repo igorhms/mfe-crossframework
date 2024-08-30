@@ -1,13 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>MfeHost</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>MfeHost</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Comfortaa"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Comfortaa", cursive;
+      padding-top: 80px;
+      padding-left: 10px;
+    }
+
+    ul.header {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      li {
+        float: left;
+        height: 60px;
+        margin-top: auto;
+        margin-bottom: auto;
+        display: flex;
+        align-items: center;
+
+        a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          cursor: pointer;
+          font-size: 16px;
+
+          &:hover {
+            background-color: #111;
+          }
+        }
+      }
+    }
+  </style>
+
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

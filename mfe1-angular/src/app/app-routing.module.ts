@@ -7,6 +7,13 @@ const routes: Routes = [
     path: '',
     component: AppComponent,
   },
+  {
+    path: 'navegacao',
+    loadChildren: () =>
+      import('./navegacao-module/navegacao.module').then(
+        (m) => m.NavegacaoModule
+      ),
+  },
 ];
 
 @NgModule({

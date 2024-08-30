@@ -64,7 +64,10 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "mfe3_react",
       filename: "remoteEntry.js",
-      exposes: [{ "./App": "./src/App" }],
+      exposes: [
+        { "./App": "./src/App" },
+        { "./Store": "./src/store/store.ts" },
+      ],
       shared: {
         ...deps,
         react: {
@@ -75,6 +78,7 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        redux: { singleton: true },
       },
     }),
     new HtmlWebPackPlugin({

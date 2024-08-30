@@ -1,10 +1,77 @@
-<div>
-  <h1>APLICAÇÃO HOST</h1>
-  <p><a routerLink="/mfe1-angular">MODULE FEDERATION 1 - ANGULAR</a></p>
-  <p><a routerLink="/mfe2-angular13">MODULE FEDERATION 2 - ANGULAR 13</a></p>
-  <p><a routerLink="/mfe3-react">MODULE FEDERATION 3 - REACT</a></p>
-  <p><a routerLink="/mfe4-vue">MODULE FEDERATION 4 - VUE</a></p>
+<ul class="header">
+  <li>
+    <img src="../assets/angular.png" width="50" />
+  </li>
+
+  <!-- Module Federation 1 - Angular (v16) -->
+  <li>
+    <a
+      routerLink="/mfe1-angular"
+      routerLinkActive="active"
+      #mf1="routerLinkActive"
+      >ANGULAR</a
+    >
+  </li>
+
+  <!-- Module Federation 2 - Angular (v13) -->
+  <li>
+    <a
+      routerLink="/mfe2-angular13"
+      routerLinkActive="active"
+      #mf2="routerLinkActive"
+      >ANGULAR 13</a
+    >
+  </li>
+
+  <!-- Module Federation 3 - React -->
+  <li>
+    <a
+      routerLink="/mfe3-react"
+      routerLinkActive="active"
+      #mf3="routerLinkActive"
+      >REACT</a
+    >
+  </li>
+
+  <!-- Module Federation 3 - Vue -->
+  <li>
+    <a routerLink="/mfe4-vue" routerLinkActive="active" #mf4="routerLinkActive"
+      >VUE</a
+    >
+  </li>
+</ul>
+
+<div class="host">
+  <span>APLICAÇÃO HOST</span>
+  <ul *ngIf="mf1.isActive">
+    <li style="cursor: pointer" routerLink="/mfe1-angular/navegacao/nav1">
+      Navegacao 1
+    </li>
+    <li style="cursor: pointer" routerLink="/mfe1-angular/navegacao/nav2">
+      Navegacao 2
+    </li>
+  </ul>
+
+  <ul *ngIf="mf2.isActive">
+    <li style="cursor: pointer" routerLink="/mfe2-angular13/nav1">
+      Navegacao 1
+    </li>
+    <li style="cursor: pointer" routerLink="/mfe2-angular13/nav2">
+      Navegacao 2
+    </li>
+  </ul>
+
+  <ul *ngIf="mf3.isActive">
+    <li style="cursor: pointer" routerLink="/mfe3-react/nav1">Navegacao 1</li>
+    <li style="cursor: pointer" routerLink="/mfe3-react/nav2">Navegacao 2</li>
+  </ul>
+
+  <ul *ngIf="mf4.isActive">
+    <li style="cursor: pointer" routerLink="/mfe4-vue/page1">Navegacao 1</li>
+    <li style="cursor: pointer" routerLink="/mfe4-vue/page2">Navegacao 2</li>
+  </ul>
 </div>
+
 <div>
   <router-outlet></router-outlet>
 </div>
