@@ -8,6 +8,8 @@ import { Page2 } from "./Page2";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { useDispatch } from "react-redux";
+import { setUser } from "./store/store";
 
 const NavigationDivs = () => {
   const navigate = useNavigate();
@@ -25,7 +27,12 @@ const NavigationDivs = () => {
 
 export const App = () => {
   const [state, setState] = useState(store.getState());
-  console.log("REACT APP", store.getState());
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(setUser(event.target.value));
+    setState(store.getState());
+  };
 
   return (
     <div className="container">
@@ -46,6 +53,12 @@ export const App = () => {
           <Route path="nav2" element={<Page2 />} />
         </Route>
       </Routes>
+
+      <input
+        type="text"
+        placeholder="Nome do usuário"
+        onChange={handleChange}
+      />
     </div>
   );
 };

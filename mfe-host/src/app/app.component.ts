@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
     remoteStore.store.dispatch({
       type: 'SET_USER',
-      payload: 'Nome alterado',
+      payload: 'ANGULAR - Nome alterado',
     });
 
     console.log(
