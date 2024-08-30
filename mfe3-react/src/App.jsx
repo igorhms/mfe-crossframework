@@ -5,11 +5,9 @@ import { Home } from "./Home";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
 
+import { Provider, useDispatch } from "react-redux";
 import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./store/store";
-import { useDispatch } from "react-redux";
-import { setUser } from "./store/store";
+import { setUser, store } from "./store/store";
 
 const NavigationDivs = () => {
   const navigate = useNavigate();
@@ -39,8 +37,8 @@ export const App = () => {
       <p style={{ fontWeight: "bold" }}>
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-          height="30"
-        ></img>
+          height="50"
+        />
         React App - {state.user}
       </p>
       <p>Versão: {React.version}</p>
@@ -54,11 +52,14 @@ export const App = () => {
         </Route>
       </Routes>
 
-      <input
-        type="text"
-        placeholder="Nome do usuário"
-        onChange={handleChange}
-      />
+      <label htmlFor="nome">
+        <input
+          id="nome"
+          type="text"
+          placeholder="Nome do usuário"
+          onChange={handleChange}
+        />
+      </label>
     </div>
   );
 };
