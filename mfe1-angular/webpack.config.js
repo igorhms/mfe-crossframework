@@ -6,7 +6,7 @@ const {
 module.exports = withModuleFederationPlugin({
   name: "mfe1-angular",
   exposes: {
-    "./Module": "./src/app/app.module.ts",
+    "./Module": "./src/app/remote-entry/remote-entry.module.ts",
   },
   shared: {
     ...shareAll({

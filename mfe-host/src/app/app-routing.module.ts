@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import {
   WebComponentWrapper,
   WebComponentWrapperOptions,
 } from '@angular-architects/module-federation-tools';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const APP_ROUTES: Routes = [
   {
@@ -14,7 +14,7 @@ const APP_ROUTES: Routes = [
         type: 'module',
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
-      }).then((m) => m.AppModule),
+      }).then((m) => m.RemoteEntryModule),
   },
   {
     path: 'mfe2-angular13',
@@ -23,7 +23,7 @@ const APP_ROUTES: Routes = [
         type: 'module',
         remoteEntry: 'http://localhost:4202/remoteEntry.js',
         exposedModule: './Module',
-      }).then((m) => m.AppModule),
+      }).then((m) => m.RemoteEntryModule),
   },
   {
     path: 'mfe3-react',

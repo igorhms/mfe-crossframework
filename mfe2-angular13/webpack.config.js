@@ -7,7 +7,7 @@ module.exports = withModuleFederationPlugin({
   name: "mfe2-angular13",
 
   exposes: {
-    "./Module": "./src/app/app.module.ts",
+    "./Module": "./src/app/remote-entry/remote-entry.module.ts",
   },
 
   shared: {

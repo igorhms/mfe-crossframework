@@ -1,23 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent,
-  },
-  {
-    path: 'navegacao',
-    loadChildren: () =>
-      import('./navegacao-module/navegacao.module').then(
-        (m) => m.NavegacaoModule
-      ),
-  },
-];
+import { RouterModule } from '@angular/router';
+import { MFE1_ROUTES } from './app.routes';
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(MFE1_ROUTES)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
