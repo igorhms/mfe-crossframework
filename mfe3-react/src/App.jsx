@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
-
+import history from "./history";
 import { Provider, useDispatch } from "react-redux";
 import "./index.css";
 import { setUser, store } from "./store/store";
@@ -46,10 +46,9 @@ export const App = () => {
       <NavigationDivs />
 
       <Routes>
-        <Route path="/mfe3-react" element={<Home />}>
-          <Route path="nav1" element={<Page1 />} />
-          <Route path="nav2" element={<Page2 />} />
-        </Route>
+        <Route path="/mfe3-react" element={<Home />} />
+        <Route path="/mfe3-react/nav1" element={<Page1 />} />
+        <Route path="/mfe3-react/nav2" element={<Page2 />} />
       </Routes>
 
       <label htmlFor="nome">
@@ -66,7 +65,7 @@ export const App = () => {
 
 const RootComponent = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <Suspense fallback={<div>Loading</div>}>
         <App />
       </Suspense>

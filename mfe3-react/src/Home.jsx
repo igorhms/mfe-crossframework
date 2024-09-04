@@ -3,7 +3,9 @@ import NavigateLinkToAngular from "./navigateLinkToAngular";
 
 export const Home = () => (
   <div>
-    <p>Home</p>
+    <p>
+      <b>Home</b>
+    </p>
     <Outlet />
     <NavigateLinkToAngular href={""}></NavigateLinkToAngular>
   </div>

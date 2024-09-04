@@ -18,7 +18,8 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/mfe4-vue/page1">Pagina 1</RouterLink>
       <RouterLink to="/mfe4-vue/page2">Pagina 2</RouterLink>
     </div>
+    
+    <RouterView></RouterView>
   </div>
 
-  <RouterView></RouterView>
 </template>

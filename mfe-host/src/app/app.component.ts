@@ -14,23 +14,5 @@ export class AppComponent implements OnInit {
     (window as any).AngularRouter = router;
   }
 
-  async ngOnInit() {
-    const remoteStore = await loadRemoteModule({
-      remoteEntry: 'http://localhost:4203/remoteEntry.js',
-      remoteName: 'mfe3_react',
-      exposedModule: './Store',
-    });
-
-    console.log('Redux Store from React:', remoteStore.store.getState());
-
-    remoteStore.store.dispatch({
-      type: 'SET_USER',
-      payload: 'ANGULAR - Nome alterado',
-    });
-
-    console.log(
-      'New State - Redux Store from React:',
-      remoteStore.store.getState()
-    );
-  }
+  async ngOnInit() {}
 }

@@ -1,5 +1,6 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import {
+  startsWith,
   WebComponentWrapper,
   WebComponentWrapperOptions,
 } from '@angular-architects/module-federation-tools';
@@ -26,7 +27,7 @@ const APP_ROUTES: Routes = [
       }).then((m) => m.RemoteEntryModule),
   },
   {
-    path: 'mfe3-react',
+    matcher: startsWith('mfe3-react'),
     component: WebComponentWrapper,
     data: {
       remoteEntry: 'http://localhost:4203/remoteEntry.js',
@@ -42,7 +43,7 @@ const APP_ROUTES: Routes = [
     ],
   },
   {
-    path: 'mfe4-vue',
+    matcher: startsWith('mfe4-vue'),
     component: WebComponentWrapper,
     data: {
       remoteEntry: 'http://localhost:4204/remoteEntry.js',
