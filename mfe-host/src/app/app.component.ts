@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     (window as any).AngularRouter = router;
+    (window as any).NavigationEnd = NavigationEnd;
   }
 
   async ngOnInit() {
