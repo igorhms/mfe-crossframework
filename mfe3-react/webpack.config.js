@@ -70,15 +70,9 @@ module.exports = (_, argv) => ({
       ],
       shared: {
         ...deps,
-        react: {
+        "shared-state-lib": {
           singleton: true,
-          requiredVersion: deps.react,
         },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
-        redux: { singleton: true },
       },
     }),
     new HtmlWebPackPlugin({

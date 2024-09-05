@@ -7,10 +7,10 @@
     "start:mfe4-vue": "cd mfe4-vue && npm start",
     "start:all": "npm-run-all --parallel start:host start:mfe1-angular start:mfe2-angular13 start:mfe3-react start:mfe4-vue",
     "deps:host": "cd mfe-host && npm install --legacy-peer-deps",
-    "deps:mfe1-angular": "cd mfe1-angular && npm install ",
-    "deps:mfe2-angular13": "cd mfe2-angular13 && npm install ",
-    "deps:mfe3-react": "cd mfe3-react && npm install ",
-    "deps:mfe4-vue": "cd mfe4-vue && npm install ",
+    "deps:mfe1-angular": "cd mfe1-angular && npm install",
+    "deps:mfe2-angular13": "cd mfe2-angular13 && npm install",
+    "deps:mfe3-react": "cd mfe3-react && npm install",
+    "deps:mfe4-vue": "cd mfe4-vue && npm install --legacy-peer-deps",
     "deps:all": "npm-run-all --parallel deps:host deps:mfe1-angular deps:mfe2-angular13 deps:mfe3-react deps:mfe4-vue"
   },
   "devDependencies": {

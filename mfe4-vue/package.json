@@ -33,7 +33,9 @@
   },
   "dependencies": {
     "rxjs": "^7.8.1",
+    "shared-state-lib": "^1.0.0",
     "vue": "^3.2.19",
-    "vue-router": "^4.4.3"
+    "vue-router": "^4.4.3",
+    "vue-rx": "^6.2.0"
   }
 }

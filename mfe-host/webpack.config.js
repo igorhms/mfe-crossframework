@@ -11,5 +11,8 @@ module.exports = withModuleFederationPlugin({
       requiredVersion: "auto",
     }),
     redux: { singleton: true },
+    "shared-state-lib": {
+      singleton: true,
+    },
   },
 });

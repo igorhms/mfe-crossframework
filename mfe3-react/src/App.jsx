@@ -1,25 +1,25 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+import { Provider, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { filter } from "rxjs";
 import { Home } from "./Home";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
-import history from "./history";
-import { Provider, useDispatch } from "react-redux";
+import { useUsername } from "./hooks/useState.ts";
+import { setUsername } from "shared-state-lib";
 import "./index.css";
-import { setUser, store } from "./store/store";
-import { filter } from "rxjs";
 
 const NavigationDivs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const subscription = window.AngularRouter.events.pipe(
-      filter(e => e instanceof window.NavigationEnd)
-    ).subscribe((event) => {
-      navigate(event?.urlAfterRedirects);
-      console.log("REACT - ", event);
-    });
+    const subscription = window.AngularRouter.events
+      .pipe(filter((e) => e instanceof window.NavigationEnd))
+      .subscribe((event) => {
+        navigate(event?.urlAfterRedirects);
+        console.log("REACT - ", event);
+      });
 
     return () => {
       subscription.unsubscribe();
@@ -39,12 +39,10 @@ const NavigationDivs = () => {
 };
 
 export const App = () => {
-  const [state, setState] = useState(store.getState());
-  const dispatch = useDispatch();
+  const username = useUsername();
 
   const handleChange = (event) => {
-    dispatch(setUser(event.target.value));
-    setState(store.getState());
+    setUsername(event.target.value);
   };
 
   return (
@@ -54,7 +52,7 @@ export const App = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
           height="50"
         />
-        React App - {state.user}
+        React App - {username}
       </p>
       <p>Versão: {React.version}</p>
       {/* <Button /> */}
@@ -79,13 +77,11 @@ export const App = () => {
 };
 
 const RootComponent = () => (
-  <Provider store={store}>
-    <BrowserRouter history={history}>
-      <Suspense fallback={<div>Loading</div>}>
-        <App />
-      </Suspense>
-    </BrowserRouter>
-  </Provider>
+  <BrowserRouter>
+    <Suspense fallback={<div>Loading</div>}>
+      <App />
+    </Suspense>
+  </BrowserRouter>
 );
 
 class ReactElement extends HTMLElement {

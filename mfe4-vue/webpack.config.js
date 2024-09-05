@@ -4,6 +4,8 @@ const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
+const deps = require("./package.json").dependencies;
+
 const printCompilationMessage = require("./compilation.config.js");
 
 module.exports = (_, argv) => ({
@@ -67,6 +69,17 @@ module.exports = (_, argv) => ({
       remotes: {},
       exposes: [{ "./App": "./src/index.js" }],
       shared: require("./package.json").dependencies,
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      },
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",

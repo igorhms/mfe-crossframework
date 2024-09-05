@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Nav1Component } from './components/nav1/nav1.component';
 import { Nav2Component } from './components/nav2/nav2.component';
+import { AppComponent } from './app.component';
 
 export const MFE2_ROUTES: Routes = [
   {
@@ -13,7 +14,6 @@ export const MFE2_ROUTES: Routes = [
   },
   {
     path: '',
-    redirectTo: 'nav1',
-    pathMatch: 'full',
+    component: AppComponent
   },
 ];

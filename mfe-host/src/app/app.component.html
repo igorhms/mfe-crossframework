@@ -53,13 +53,11 @@
 
 <div class="host">
   <span>APLICAÇÃO HOST</span>
+  <h3>Username: {{ username }}</h3>
+  <input [(ngModel)]="newUsername" (ngModelChange)="updateUsername()" placeholder="Insira o novo username">
   <ul *ngIf="mf1.isActive">
-    <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">
-      Navegacao 1
-    </li>
-    <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">
-      Navegacao 2
-    </li>
+    <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">Navegacao 1</li>
+    <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">Navegacao 2</li>
   </ul>
 
   <ul *ngIf="mf2.isActive">
