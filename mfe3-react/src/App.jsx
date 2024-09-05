@@ -11,6 +11,19 @@ import { setUser, store } from "./store/store";
 
 const NavigationDivs = () => {
   const navigate = useNavigate();
+
+  window.AngularRouter.events.subscribe((event) => {
+    if (
+      !event?.routerEvent &&
+      !event?.snapshot &&
+      !event?.state &&
+      !event?.navigationTrigger
+    ) {
+      navigate(event?.urlAfterRedirects);
+      console.log("REACT - ", event);
+    }
+  });
+
   return (
     <div style={{ display: "flex", padding: 10, gap: "10px" }}>
       <div onClick={() => navigate("/mfe3-react/nav1")} className="nav-card">
