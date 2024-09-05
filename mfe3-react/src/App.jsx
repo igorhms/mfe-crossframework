@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Home } from "./Home";
@@ -8,21 +8,23 @@ import history from "./history";
 import { Provider, useDispatch } from "react-redux";
 import "./index.css";
 import { setUser, store } from "./store/store";
+import { filter } from "rxjs";
 
 const NavigationDivs = () => {
   const navigate = useNavigate();
 
-  window.AngularRouter.events.subscribe((event) => {
-    if (
-      !event?.routerEvent &&
-      !event?.snapshot &&
-      !event?.state &&
-      !event?.navigationTrigger
-    ) {
+  useEffect(() => {
+    const subscription = window.AngularRouter.events.pipe(
+      filter(e => e instanceof window.NavigationEnd)
+    ).subscribe((event) => {
       navigate(event?.urlAfterRedirects);
       console.log("REACT - ", event);
-    }
-  });
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [navigate]);
 
   return (
     <div style={{ display: "flex", padding: 10, gap: "10px" }}>
