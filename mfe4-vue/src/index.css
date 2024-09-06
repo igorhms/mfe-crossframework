@@ -1,6 +1,11 @@
 .container {
   font-size: 1.8rem;
-  margin: auto;
-  max-width: 800px;
-  margin-top: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 35px;
+  font-weight: bold;
 }

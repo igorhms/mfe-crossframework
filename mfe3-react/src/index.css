@@ -1,15 +1,20 @@
 .container {
-  font-size: 1.8rem;
-  margin: auto;
-  max-width: 800px;
-  margin-top: 20px;
+  font-size: 1.4rem;
 }
 
 .nav-card {
   border-radius: 10px;
   background: #cccccc;
   border: 1px groove;
-  padding: 50px;
+  padding: 30px;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 35px;
+  font-weight: bold;
 }

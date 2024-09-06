@@ -47,14 +47,15 @@ export const App = () => {
 
   return (
     <div className="container">
-      <p style={{ fontWeight: "bold" }}>
+      <div className="title">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
           height="50"
         />
-        React App - {username}
-      </p>
-      <p>Versão: {React.version}</p>
+        <span style={{ fontWeight: "bold" }}>Aplicação React</span>
+      </div>
+      <p>Username: {username}</p>
+      {/* <p>Versão: {React.version}</p> */}
       {/* <Button /> */}
       <NavigationDivs />
 
@@ -64,14 +65,14 @@ export const App = () => {
         <Route path="/mfe3-react/nav2" element={<Page2 />} />
       </Routes>
 
-      <label htmlFor="nome">
+      {/* <label htmlFor="nome">
         <input
           id="nome"
           type="text"
           placeholder="Nome do usuário"
           onChange={handleChange}
         />
-      </label>
+      </label> */}
     </div>
   );
 };

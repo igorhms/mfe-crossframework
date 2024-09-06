@@ -9,7 +9,7 @@
       routerLink="/mfe1-angular"
       routerLinkActive="active"
       #mf1="routerLinkActive"
-      >Angular</a
+      >Angular LTS</a
     >
   </li>
 
@@ -19,7 +19,7 @@
       routerLink="/mfe2-angular13"
       routerLinkActive="active"
       #mf2="routerLinkActive"
-      >Angular 13</a
+      >Angular Legado (v13)</a
     >
   </li>
 
@@ -51,35 +51,64 @@
   </li>
 </ul>
 
-<div class="host">
-  <span>APLICAÇÃO HOST</span>
-  <h3>Username: {{ username }}</h3>
-  <input [(ngModel)]="newUsername" (ngModelChange)="updateUsername()" placeholder="Insira o novo username">
-  <ul *ngIf="mf1.isActive">
-    <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">Navegacao 1</li>
-    <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">Navegacao 2</li>
-  </ul>
+<div class="content">
+  <div class="host">
+    <span>CONTEÚDO APLICAÇÃO HOST</span>
+    <h3>Username: {{ username }}</h3>
+    <input
+      [(ngModel)]="newUsername"
+      (ngModelChange)="updateUsername()"
+      placeholder="Insira o novo username"
+    />
+    <ul *ngIf="mf1.isActive">
+      <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">
+        Navegacao 1
+      </li>
+      <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">
+        Navegacao 2
+      </li>
+    </ul>
 
-  <ul *ngIf="mf2.isActive">
-    <li style="cursor: pointer" routerLink="/mfe2-angular13/nav1">
-      Navegacao 1
-    </li>
-    <li style="cursor: pointer" routerLink="/mfe2-angular13/nav2">
-      Navegacao 2
-    </li>
-  </ul>
+    <ul *ngIf="mf2.isActive">
+      <li style="cursor: pointer" routerLink="/mfe2-angular13/nav1">
+        Navegacao 1
+      </li>
+      <li style="cursor: pointer" routerLink="/mfe2-angular13/nav2">
+        Navegacao 2
+      </li>
+    </ul>
 
-  <ul *ngIf="mf3.isActive">
-    <li style="cursor: pointer" routerLink="/mfe3-react/nav1">Navegacao 1</li>
-    <li style="cursor: pointer" routerLink="/mfe3-react/nav2">Navegacao 2</li>
-  </ul>
+    <ul *ngIf="mf3.isActive">
+      <li style="cursor: pointer" routerLink="/mfe3-react/nav1">Navegacao 1</li>
+      <li style="cursor: pointer" routerLink="/mfe3-react/nav2">Navegacao 2</li>
+    </ul>
 
-  <ul *ngIf="mf4.isActive">
-    <li style="cursor: pointer" routerLink="/mfe4-vue/page1">Navegacao 1</li>
-    <li style="cursor: pointer" routerLink="/mfe4-vue/page2">Navegacao 2</li>
-  </ul>
+    <ul *ngIf="mf4.isActive">
+      <li style="cursor: pointer" routerLink="/mfe4-vue/page1">Navegacao 1</li>
+      <li style="cursor: pointer" routerLink="/mfe4-vue/page2">Navegacao 2</li>
+    </ul>
+  </div>
+
+  <button
+    class="back-host"
+    routerLink=""
+    routerLinkActive="active"
+    *ngIf="!isRouteActive('host')"
+  >
+    <img src="../assets/back-button.png" width="25" />
+    Voltar para o HOST
+  </button>
 </div>
 
-<div>
+<div
+  [ngClass]="{
+    'host-outlet': !isRouteActive('host'),
+    'host-outlet__angular':
+      isRouteActive(rotasEnum.MFE1_Angular) ||
+      isRouteActive(rotasEnum.MFE2_Angular13),
+    'host-outlet__react': isRouteActive(rotasEnum.MFE3_React),
+    'host-outlet__vue': isRouteActive(rotasEnum.MFE4_Vue)
+  }"
+>
   <router-outlet></router-outlet>
 </div>
