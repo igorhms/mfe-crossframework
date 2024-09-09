@@ -6,6 +6,8 @@ import {
 } from '@angular-architects/module-federation-tools';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorHandlingGuard } from './core/guards/error-handling-remote.guard';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -15,7 +17,14 @@ const APP_ROUTES: Routes = [
         type: 'module',
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
-      }).then((m) => m.RemoteEntryModule),
+      })
+        .then((m) => m.RemoteEntryModule)
+        .catch((error) => {
+          console.error('Erro ao carregar mfe1-angular:', error);
+          return import('./components/error-page/error.module').then(
+            (m) => m.ErrorModule
+          );
+        }),
   },
   {
     path: 'mfe2-angular13',
@@ -24,7 +33,14 @@ const APP_ROUTES: Routes = [
         type: 'module',
         remoteEntry: 'http://localhost:4202/remoteEntry.js',
         exposedModule: './Module',
-      }).then((m) => m.RemoteEntryModule),
+      })
+        .then((m) => m.RemoteEntryModule)
+        .catch((error) => {
+          console.error('Erro ao carregar mfe1-angular:', error);
+          return import('./components/error-page/error.module').then(
+            (m) => m.ErrorModule
+          );
+        }),
   },
   {
     matcher: startsWith('mfe3-react'),
@@ -35,6 +51,7 @@ const APP_ROUTES: Routes = [
       exposedModule: './App',
       elementName: 'mfe3_react-element',
     } as WebComponentWrapperOptions,
+    canActivate: [ErrorHandlingGuard],
     children: [
       {
         path: '**',
@@ -51,12 +68,17 @@ const APP_ROUTES: Routes = [
       exposedModule: './App',
       elementName: 'mfe4_vue-element',
     } as WebComponentWrapperOptions,
+    canActivate: [ErrorHandlingGuard],
     children: [
       {
         path: '**',
         component: WebComponentWrapper,
       },
     ],
+  },
+  {
+    path: 'error',
+    component: ErrorPageComponent,
   },
 ];
 
