@@ -29,20 +29,20 @@ li a:hover {
       color: #0000ff;
     }
   }
+}
 
-  .back-host {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
+.back-host {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
 
-    height: 50px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #43bcff !important;
-    color: white;
-    font-weight: bold;
-  }
+  height: 50px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #43bcff !important;
+  color: white;
+  font-weight: bold;
 }
 
 .host-outlet {
@@ -63,5 +63,33 @@ li a:hover {
 
   &__vue {
     border-color: #81c784;
+  }
+}
+
+.header-username {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: auto;
+  place-content: flex-end;
+  margin-right: 40px;
+  gap: 5px;
+  font-weight: bold;
+  color: white;
+
+  input {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+  }
+}
+
+mat-icon {
+  color: white;
+}
+
+:host::ng-deep {
+  .mdc-button {
+    min-width: auto;
   }
 }
