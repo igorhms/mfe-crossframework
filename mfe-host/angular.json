@@ -30,7 +30,8 @@
 							"src/assets"
 						],
 						"styles": [
-							"src/styles.scss"
+							"src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "webpack.config.js",
@@ -68,11 +69,11 @@
 					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "mfe-host:build:production",
+							"buildTarget": "mfe-host:build:production",
 							"extraWebpackConfig": "webpack.prod.config.js"
 						},
 						"development": {
-							"browserTarget": "mfe-host:build:development"
+							"buildTarget": "mfe-host:build:development"
 						}
 					},
 					"defaultConfiguration": "development",
@@ -85,7 +86,7 @@
 				"extract-i18n": {
 					"builder": "ngx-build-plus:extract-i18n",
 					"options": {
-						"browserTarget": "mfe-host:build",
+						"buildTarget": "mfe-host:build",
 						"extraWebpackConfig": "webpack.config.js"
 					}
 				},
