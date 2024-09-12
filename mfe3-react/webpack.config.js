@@ -65,7 +65,7 @@ module.exports = (_, argv) => ({
       name: "mfe3_react",
       filename: "remoteEntry.js",
       exposes: [
-        { "./App": "./src/App" },
+        { "App": "./src/App" },
         { "./Store": "./src/store/store.ts" },
       ],
       shared: {
