@@ -39,11 +39,11 @@ const NavigationDivs = () => {
 };
 
 export const App = (props) => {
-  // const username = useUsername();
+  const username = useUsername();
 
-  // const handleChange = (event) => {
-  //   setUsername(event.target.value);
-  // };
+  const handleChange = (event) => {
+    setUsername(event.target.value);
+  };
 
   return (
     <div className="container">
@@ -54,8 +54,8 @@ export const App = (props) => {
         />
         <span style={{ fontWeight: "bold" }}>Aplicação React</span>
       </div>
-      {/* <p>Username: {username}</p> */}
-      {/* <p>Versão: {React.version}</p> */}
+      <p>Username: {username}</p>
+      <p>Versão: {React.version}</p>
       {/* <Button /> */}
       <NavigationDivs />
 
@@ -65,14 +65,14 @@ export const App = (props) => {
         <Route path={'/nav2'} element={<Page2 />} />
       </Routes>
 
-      {/* <label htmlFor="nome">
+      <label htmlFor="nome">
         <input
           id="nome"
           type="text"
           placeholder="Nome do usuário"
           onChange={handleChange}
         />
-      </label> */}
+      </label>
     </div>
   );
 };
