@@ -23,17 +23,18 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+    history: createWebHistory(),
+    routes
+})
 
-export class MfeVue extends HTMLElement {
-  connectedCallback() {
-    const app = createApp(App);
-    app.use(router);
-    app.mount(this);
-  }
+export default (refElement, props, base) => {
+  const app = createApp(App, {
+      data: () => {
+          return (this.props || {});
+      }
+  });
+  app.use(router);
+  console.log("VUE REF ELEMENT", refElement)
+  app.mount(refElement);
 }
 
-customElements.define("mfe4_vue-element", MfeVue);
-createApp(App).use(router).mount("#app");

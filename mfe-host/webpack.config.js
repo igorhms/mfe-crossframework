@@ -2,6 +2,7 @@ const {
   shareAll,
   withModuleFederationPlugin,
 } = require("@angular-architects/module-federation/webpack");
+const webpack = require("webpack");
 
 module.exports = withModuleFederationPlugin({
   shared: {
@@ -14,5 +15,9 @@ module.exports = withModuleFederationPlugin({
     "shared-state-lib": {
       singleton: true,
     },
+    'history': {
+      singleton: true,
+    }
+    // React: "react",
   },
 });

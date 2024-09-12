@@ -8,8 +8,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { ReactWrapperModule } from './modules/react-wrapper/react-wrapper.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
+    ReactWrapperModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
@@ -27,4 +31,4 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

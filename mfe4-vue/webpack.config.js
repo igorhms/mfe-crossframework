@@ -67,18 +67,18 @@ module.exports = (_, argv) => ({
       name: "mfe4_vue",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: [{ "./App": "./src/index.js" }],
+      exposes: [{ "./App": "./src/bootloader.js" }],
       shared: require("./package.json").dependencies,
       shared: {
         ...deps,
-        react: {
+        vue: {
           singleton: true,
-          requiredVersion: deps.react,
+          requiredVersion: deps.vue,
         },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
+        // "react-dom": {
+        //   singleton: true,
+        //   requiredVersion: deps["react-dom"],
+        // },
       },
     }),
     new HtmlWebPackPlugin({

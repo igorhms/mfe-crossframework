@@ -1,4 +1,4 @@
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { loadRemoteModule } from '@angular-architects/module-federation-runtime';
 import {
   startsWith,
   WebComponentWrapper,
@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorHandlingGuard } from './core/guards/error-handling-remote.guard';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { VueWrapperComponent } from './modules/vue-wrapper/vue-wrapper.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -43,39 +44,86 @@ const APP_ROUTES: Routes = [
         }),
   },
   {
-    matcher: startsWith('mfe3-react'),
-    component: WebComponentWrapper,
-    data: {
-      remoteEntry: 'http://localhost:4203/remoteEntry.js',
-      remoteName: 'mfe3_react',
-      exposedModule: './App',
-      elementName: 'mfe3_react-element',
-    } as WebComponentWrapperOptions,
-    canActivate: [ErrorHandlingGuard],
+    // matcher: startsWith('mfe3-react'),
+    // canActivate: [ErrorHandlingGuard],
+    path: 'mfe3-react',
     children: [
       {
         path: '**',
-        component: WebComponentWrapper,
+        loadChildren: () => import('./modules/react-wrapper/react-wrapper.module').then((m) => {
+          return m.ReactWrapperModule;
+        }),
+        data: {
+          configuration: {
+            type: 'react',
+            remoteEntry: 'http://localhost:4203/remoteEntry.js',
+            remoteName: 'mfe3_react',
+            exposedModule: 'App',
+            displayName: 'Nested routes example',
+            routePath: 'mfe3-react',
+            navigationAlias: 'mfe3-react',
+            moduleClassName: 'RootComponent'
+          }
+        }
       },
     ],
   },
+  // {
+  //   matcher: startsWith('mfe3-react'),
+  //   component: WebComponentWrapper,
+  //   data: {
+  //     remoteEntry: 'http://localhost:4203/remoteEntry.js',
+  //     remoteName: 'mfe3_react',
+  //     exposedModule: './App',
+  //     elementName: 'mfe3_react-element',
+  //     type: 'script',
+  //   } as WebComponentWrapperOptions,
+  //   canActivate: [ErrorHandlingGuard],
+  //   children: [
+  //     {
+  //       path: '**',
+  //       component: WebComponentWrapper,
+  //     },
+  //   ],
+  // },
   {
-    matcher: startsWith('mfe4-vue'),
-    component: WebComponentWrapper,
-    data: {
-      remoteEntry: 'http://localhost:4204/remoteEntry.js',
-      remoteName: 'mfe4_vue',
-      exposedModule: './App',
-      elementName: 'mfe4_vue-element',
-    } as WebComponentWrapperOptions,
-    canActivate: [ErrorHandlingGuard],
+    path: 'mfe4-vue',
+    // canActivate: [ErrorHandlingGuard],
     children: [
       {
         path: '**',
-        component: WebComponentWrapper,
+        component: VueWrapperComponent,
+        data: {
+          configuration: {
+            type: 'vue',
+            remoteEntry: 'http://localhost:4204/remoteEntry.js',
+            remoteName: 'mfe4_vue',
+            exposedModule: './App',
+            displayName: 'Simple Vue Component',
+            routePath: 'mfe4-vue',
+            navigationAlias: 'mfe4-vue'
+          }
+        }
       },
     ],
   },
+  // {
+  //   matcher: startsWith('mfe4-vue'),
+  //   component: WebComponentWrapper,
+  //   data: {
+  //     remoteEntry: 'http://localhost:4204/remoteEntry.js',
+  //     remoteName: 'mfe4_vue',
+  //     exposedModule: './App',
+  //     elementName: 'mfe4_vue-element',
+  //   } as WebComponentWrapperOptions,
+  //   canActivate: [ErrorHandlingGuard],
+  //   children: [
+  //     {
+  //       path: '**',
+  //       component: WebComponentWrapper,
+  //     },
+  //   ],
+  // },
   {
     path: 'error',
     component: ErrorPageComponent,

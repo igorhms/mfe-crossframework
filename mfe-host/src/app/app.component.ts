@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getUsernameObservable, setUsername } from 'shared-state-lib';
+import { NavigationHistoryService } from './services/navigation-history.service';
 
 enum AplicacaoRota {
   HOST = '/',
@@ -22,14 +23,17 @@ export class AppComponent implements OnInit {
   username: string | null = null;
   newUsername: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private navigationHistory: NavigationHistoryService) {
     (window as any).AngularRouter = router;
     (window as any).NavigationEnd = NavigationEnd;
   }
 
   async ngOnInit() {
     this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd) console.log('ROUTE - ', event);
+      if (event instanceof NavigationEnd) {
+        console.log("[HOST] Navigation EVENT: ", event);
+        this.navigationHistory.history.push(event.urlAfterRedirects);
+      }
     });
 
     getUsernameObservable().subscribe(

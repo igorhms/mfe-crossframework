@@ -24,9 +24,17 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-router-dom": "^5.3.3",
+    "history": "^5.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
     "rxjs": "~7.8.0",
-    "shared-state-lib": "^1.0.0",
+    "shared-state-lib": "file:../shared-state-lib",
     "tslib": "^2.3.0",
+    "vue": "^3.5.4",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

@@ -14,21 +14,21 @@ const usernameSubscription = username$.subscribe((value) => {
 });
 
 onMounted(() => {
-  if (window.AngularRouter && window.AngularRouter.events) {
-    const angularSubscription = window.AngularRouter.events
-      .pipe(filter((e) => e instanceof window.NavigationEnd))
-      .subscribe((event) => {
-        router.push(event?.urlAfterRedirects);
-        console.log("VUE - ", event);
-      });
+  // if (window.AngularRouter && window.AngularRouter.events) {
+  //   const angularSubscription = window.AngularRouter.events
+  //     .pipe(filter((e) => e instanceof window.NavigationEnd))
+  //     .subscribe((event) => {
+  //       router.push(event?.urlAfterRedirects);
+  //       console.log("VUE - ", event);
+  //     });
 
-    onUnmounted(() => {
-      angularSubscription.unsubscribe();
-      usernameSubscription.unsubscribe();
-    });
-  } else {
-    console.error("AngularRouter não está disponível.");
-  }
+  //   onUnmounted(() => {
+  //     angularSubscription.unsubscribe();
+  //     usernameSubscription.unsubscribe();
+  //   });
+  // } else {
+  //   console.error("AngularRouter não está disponível.");
+  // }
 });
 </script>
 
@@ -51,6 +51,6 @@ onMounted(() => {
       <RouterLink to="/mfe4-vue/page2">Pagina 2</RouterLink>
     </div>
 
-    <RouterView></RouterView>
+    <RouterView id="app"></RouterView>
   </div>
 </template>
