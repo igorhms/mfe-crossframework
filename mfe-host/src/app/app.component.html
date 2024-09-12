@@ -1,93 +1,189 @@
-<ul class="header">
-  <li>
-    <img src="../assets/angular.png" width="50" />
-  </li>
+<div>
+  <ul class="header">
+    <li>
+      <img src="../assets/angular.png" width="50" />
+    </li>
 
-  <!-- Module Federation 1 - Angular (v16) -->
-  <li>
-    <a
-      routerLink="/mfe1-angular"
-      routerLinkActive="active"
-      #mf1="routerLinkActive"
-      >Angular LTS</a
-    >
-  </li>
+    <!-- Module Federation 1 - Angular (v16) -->
+    <li>
+      <a
+        routerLink="/mfe1-angular"
+        routerLinkActive="active"
+        #mf1="routerLinkActive"
+        >Angular LTS</a
+      >
+      <button mat-button [matMenuTriggerFor]="lts">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #lts="matMenu" xPosition="before" yPosition="below">
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe1-angular/nav1"
+        >
+          Página 1
+        </button>
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe1-angular/nav2"
+        >
+          Página 2
+        </button>
+      </mat-menu>
+    </li>
 
-  <!-- Module Federation 2 - Angular (v13) -->
-  <li>
-    <a
-      routerLink="/mfe2-angular13"
-      routerLinkActive="active"
-      #mf2="routerLinkActive"
-      >Angular Legado (v13)</a
-    >
-  </li>
+    <!-- Module Federation 2 - Angular (v13) -->
+    <li>
+      <a
+        routerLink="/mfe2-angular13"
+        routerLinkActive="active"
+        #mf2="routerLinkActive"
+        >Angular Legado (v13)</a
+      >
+      <button mat-button [matMenuTriggerFor]="a13">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #a13="matMenu" xPosition="before" yPosition="below">
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe2-angular13/nav1"
+        >
+          Página 1
+        </button>
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe2-angular13/nav2"
+        >
+          Página 2
+        </button>
+      </mat-menu>
+    </li>
 
-  <!-- Module Federation 3 - React -->
-  <li>
-    <a
-      routerLink="/mfe3-react"
-      routerLinkActive="active"
-      #mf3="routerLinkActive"
-    >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-        height="15"
-      />{{ " " }} React</a
-    >
-  </li>
+    <!-- Module Federation 3 - React -->
+    <li>
+      <a
+        routerLink="/mfe3-react"
+        routerLinkActive="active"
+        #mf3="routerLinkActive"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+          height="15"
+        />
+        React</a
+      >
+      <button mat-button [matMenuTriggerFor]="react">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #react="matMenu" xPosition="before" yPosition="below">
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe3-react/nav1"
+        >
+          Página 1
+        </button>
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe3-react/nav2"
+        >
+          Página 2
+        </button>
+      </mat-menu>
+    </li>
 
-  <!-- Module Federation 3 - Vue -->
-  <li>
-    <a routerLink="/mfe4-vue" routerLinkActive="active" #mf4="routerLinkActive"
-      ><img
-        width="18"
-        height="18"
-        src="https://img.icons8.com/color/48/vue-js.png"
-        alt="vue-js"
+    <!-- Module Federation 3 - Vue -->
+    <li>
+      <a
+        routerLink="/mfe4-vue"
+        routerLinkActive="active"
+        #mf4="routerLinkActive"
+        ><img
+          width="18"
+          height="18"
+          src="https://img.icons8.com/color/48/vue-js.png"
+          alt="vue-js"
+        />
+        Vue</a
+      >
+      <button mat-button [matMenuTriggerFor]="vue">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #vue="matMenu" xPosition="before" yPosition="below">
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe4-vue/page1"
+        >
+          Página 1
+        </button>
+        <button
+          mat-menu-item
+          style="cursor: pointer"
+          routerLink="/mfe4-vue/page2"
+        >
+          Página 2
+        </button>
+      </mat-menu>
+    </li>
+
+    <div class="header-username">
+      <label>Usuário</label>
+      <input
+        [(ngModel)]="newUsername"
+        (change)="updateUsername()"
+        placeholder="Digite o nome do usuário"
       />
-      Vue</a
-    >
-  </li>
-</ul>
+    </div>
+  </ul>
 
-<div class="content">
-  <div class="host">
-    <span>CONTEÚDO APLICAÇÃO HOST</span>
-    <h3>Username: {{ username }}</h3>
-    <input
-      [(ngModel)]="newUsername"
-      (ngModelChange)="updateUsername()"
-      placeholder="Insira o novo username"
-    />
-    <ul *ngIf="mf1.isActive">
-      <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">
-        Navegacao 1
-      </li>
-      <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">
-        Navegacao 2
-      </li>
-    </ul>
-
-    <ul *ngIf="mf2.isActive">
-      <li style="cursor: pointer" routerLink="/mfe2-angular13/nav1">
-        Navegacao 1
-      </li>
-      <li style="cursor: pointer" routerLink="/mfe2-angular13/nav2">
-        Navegacao 2
-      </li>
-    </ul>
-
-    <ul *ngIf="mf3.isActive">
-      <li style="cursor: pointer" routerLink="/mfe3-react/nav1">Navegacao 1</li>
-      <li style="cursor: pointer" routerLink="/mfe3-react/nav2">Navegacao 2</li>
-    </ul>
-
-    <ul *ngIf="mf4.isActive">
-      <li style="cursor: pointer" routerLink="/mfe4-vue/page1">Navegacao 1</li>
-      <li style="cursor: pointer" routerLink="/mfe4-vue/page2">Navegacao 2</li>
-    </ul>
+  <div class="content" *ngIf="isRouteActive('host')">
+    <div class="host">
+      <span>CONTEÚDO APLICAÇÃO HOST</span>
+    </div>
   </div>
+  <!-- <h3>Username: {{ username }}</h3> -->
+  <!-- <ul *ngIf="mf1.isActive">
+        <li style="cursor: pointer" routerLink="/mfe1-angular/nav1">
+          Página 1
+        </li>
+        <li style="cursor: pointer" routerLink="/mfe1-angular/nav2">
+          Página 2
+        </li>
+      </ul>
+
+      <ul *ngIf="mf2.isActive">
+        <li style="cursor: pointer" routerLink="/mfe2-angular13/nav1">
+          Página 1
+        </li>
+        <li style="cursor: pointer" routerLink="/mfe2-angular13/nav2">
+          Página 2
+        </li>
+      </ul>
+
+      <ul *ngIf="mf3.isActive">
+        <li style="cursor: pointer" routerLink="/mfe3-react/nav1">
+          Página 1
+        </li>
+        <li style="cursor: pointer" routerLink="/mfe3-react/nav2">
+          Página 2
+        </li>
+      </ul>
+
+      <ul *ngIf="mf4.isActive">
+        <li style="cursor: pointer" routerLink="/mfe4-vue/page1">
+          Página 1
+        </li>
+        <li style="cursor: pointer" routerLink="/mfe4-vue/page2">
+          Página 2
+        </li>
+      </ul>
+    </div>
+  </div>-->
 
   <button
     class="back-host"
@@ -98,17 +194,17 @@
     <img src="../assets/back-button.png" width="25" />
     Voltar para o HOST
   </button>
-</div>
 
-<div
-  [ngClass]="{
-    'host-outlet': !isRouteActive('host'),
-    'host-outlet__angular':
-      isRouteActive(rotasEnum.MFE1_Angular) ||
-      isRouteActive(rotasEnum.MFE2_Angular13),
-    'host-outlet__react': isRouteActive(rotasEnum.MFE3_React),
-    'host-outlet__vue': isRouteActive(rotasEnum.MFE4_Vue)
-  }"
->
-  <router-outlet></router-outlet>
+  <div
+    [ngClass]="{
+      'host-outlet': !isRouteActive('host'),
+      'host-outlet__angular':
+        isRouteActive(rotasEnum.MFE1_Angular) ||
+        isRouteActive(rotasEnum.MFE2_Angular13),
+      'host-outlet__react': isRouteActive(rotasEnum.MFE3_React),
+      'host-outlet__vue': isRouteActive(rotasEnum.MFE4_Vue)
+    }"
+  >
+    <router-outlet></router-outlet>
+  </div>
 </div>

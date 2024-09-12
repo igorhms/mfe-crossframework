@@ -29,10 +29,10 @@ const NavigationDivs = () => {
   return (
     <div style={{ display: "flex", padding: 10, gap: "10px" }}>
       <div onClick={() => navigate("/mfe3-react/nav1")} className="nav-card">
-        Navegação 1
+        Página 1
       </div>
       <div onClick={() => navigate("/mfe3-react/nav2")} className="nav-card">
-        Navegação 2
+        Página 2
       </div>
     </div>
   );
