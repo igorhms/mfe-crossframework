@@ -125,6 +125,10 @@ const APP_ROUTES: Routes = [
   //   ],
   // },
   {
+    path: 'lib-angular',
+    loadChildren: () => import('lib-angular-module').then(m => m.LibAngularModule)
+  },
+  {
     path: 'error',
     component: ErrorPageComponent,
   },

@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ReactWrapperModule } from './modules/react-wrapper/react-wrapper.module';
+import { LibAngularModule } from 'lib-angular-module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,9 +27,10 @@ import { ReactWrapperModule } from './modules/react-wrapper/react-wrapper.module
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    LibAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
