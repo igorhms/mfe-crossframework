@@ -107,23 +107,22 @@ const APP_ROUTES: Routes = [
       },
     ],
   },
-  // {
-  //   matcher: startsWith('mfe4-vue'),
-  //   component: WebComponentWrapper,
-  //   data: {
-  //     remoteEntry: 'http://localhost:4204/remoteEntry.js',
-  //     remoteName: 'mfe4_vue',
-  //     exposedModule: './App',
-  //     elementName: 'mfe4_vue-element',
-  //   } as WebComponentWrapperOptions,
-  //   canActivate: [ErrorHandlingGuard],
-  //   children: [
-  //     {
-  //       path: '**',
-  //       component: WebComponentWrapper,
-  //     },
-  //   ],
-  // },
+  {
+    path: 'camera',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:8100/remoteEntry.js',
+        exposedModule: './Module',
+      })
+        .then((m) => m.RemoteEntryModule)
+        .catch((error) => {
+          console.error('Erro ao carregar camera-app:', error);
+          return import('./components/error-page/error.module').then(
+            (m) => m.ErrorModule
+          );
+        }),
+  },
   {
     path: 'lib-angular',
     loadChildren: () => import('lib-angular-module').then(m => m.LibAngularModule)
