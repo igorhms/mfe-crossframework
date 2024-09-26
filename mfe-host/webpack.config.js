@@ -7,17 +7,17 @@ const webpack = require("webpack");
 module.exports = withModuleFederationPlugin({
   shared: {
     ...shareAll({
-      singleton: true,
-      strictVersion: true,
+      singleton: false,
+      strictVersion: false,
       requiredVersion: "auto",
     }),
     redux: { singleton: true },
     "shared-state-lib": {
       singleton: true,
     },
-    'history': {
+    history: {
       singleton: true,
-    }
+    },
     // React: "react",
   },
 });

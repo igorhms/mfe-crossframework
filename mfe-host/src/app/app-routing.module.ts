@@ -107,6 +107,24 @@ const APP_ROUTES: Routes = [
       },
     ],
   },
+
+  {
+    path: 'mfe5-angular17',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'script',
+        remoteName: 'mfe5',
+        exposedModule: './routes',
+        remoteEntry: 'http://localhost:4205/remoteEntry.js',
+      })
+        .then((m) => m.MFE5_ROUTES)
+        .catch((error) => {
+          console.error('Erro ao carregar mfe5-angular17:', error);
+          return import('./components/error-page/error.module').then(
+            (m) => m.ErrorModule
+          );
+        }),
+  },
   {
     path: 'camera',
     loadChildren: () =>
@@ -123,10 +141,10 @@ const APP_ROUTES: Routes = [
           );
         }),
   },
-  {
-    path: 'lib-angular',
-    loadChildren: () => import('lib-angular-module').then(m => m.LibAngularModule)
-  },
+  // {
+  //   path: 'lib-angular',
+  //   loadChildren: () => import('lib-angular-module').then(m => m.LibAngularModule)
+  // },
   {
     path: 'error',
     component: ErrorPageComponent,
